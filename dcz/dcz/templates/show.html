@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iufo</title>
+    <!--
+	引用
+	-->
+     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-table.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/bootstrap-table.js"></script>
+
+    <script src="/static/js/tableExport.js"></script>
+    <script src="/static/js/bootstrap-table-export.js"></script>
+    <script src="/static/js/jquery.base64.js"></script>
+
+	<script src="/static/js/bootstrap-table-zh-CN.js"></script>
+    <!--
+	引用结束
+	-->
+</head>
+<body>
+    <table id="thetable" ></table>
+
+    <script>
+         $('#thetable').bootstrapTable({
+            cardView:true,
+            toolbar: '#toolbar',
+            sidePagination: "client",
+            pageNumber: 1,
+            pagination: true,
+            striped: true,
+            clickToSelect: true,
+            showColumns: true,
+            search: true,
+            showToggle: true,
+            showPaginationSwitch: true,
+            showExport: true,
+            exportDataType: "all",
+            clickToSelect: true,
+            columns: [
+                {field: 'zdate',title: '报名日期'},
+                {field: 'shoolname',title: '分校名称'},
+                {field: 'zcity',title: '省+市'},
+                {field: 'uname',title: '姓名'},
+                {field: 'tel',title: '手机'},
+                {field: 'uaddress',title: '地址'},
+                {field: 'zpostcode',title: '邮编'},
+                {field: 'product',title: '书/课'},
+                {field: 'ztype',title: '类别'},
+                {field: 'ucount',title: '数量'},
+                {field: 'uamt',title: '总额'},
+                {field: 'ubank',title: '银行'},
+                {field: 'splace',title: '营销'},
+                {field: 'uid',title: '身份证号'},
+                {field: 'uqq',title: 'QQ邮箱'},
+                {field: 'snote',title: '备注'},
+                {field: 'yc',title: '分校预存'},
+                {field: 'uaccount',title: '账号'},
+                {field: 'upws',title: '密码'},
+                {field: 'wx',title: '微信号'},
+                {field: 'channel',title: '通过什么途径报名'},
+                {field: 'icopy',title: '身份证复印件'},
+                {field: 'ptype',title: '智能手机型号'},
+            ],
+            data: [
+            {% for i in list %}
+                {
+                zdate:'{{ i.zdate }}',
+                shoolname:'{{i.shoolname}}',
+                zcity:'{{i.zcity}}',
+                uname:'{{ i.uname }}',
+                tel:'{{ i.tel }}',
+                uaddress:'{{ i.uaddress }}',
+                zpostcode:'{{ i.zpostcode }}',
+                product:'{{ i.product }}',
+                ztype:'{{ i.ztype }}',
+                ucount:'{{ i.ucount }}',
+                uamt:'{{ i.uamt }}',
+                ubank:'{{ i.ubank }}',
+                splace:'{{ i.splace }}',
+                uid:'{{ i.uid }}',
+                uqq:'{{ i.uqq }}',
+                snote:'{{ i.snote }}',
+                yc:'{{ i.yc }}',
+                uaccount:'{{ i.uaccount }}',
+                upws:'{{ i.upws }}',
+                wx:'{{ i.wx }}',
+                channel:'{{ i.channel }}',
+                icopy:'{{ i.icopy }}',
+                ptype:'{{ i.ptype }}',
+                },
+            {% endfor %}
+            ]
+         })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>销售登记</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+<!-- font files  -->
+
+<!-- /font files  -->
+<!-- css files -->
+<link href="/static/css/styleui.css" rel='stylesheet' type='text/css' media="all" />
+     <!--<link rel="stylesheet" href="/static/css/normalize.css">-->
+    <style>
+        span
+        {
+            font-size:30px;color:#FFF
+        }
+        select
+        {
+            width:75.8%;
+            height:50px;
+            background-color:rgba(0,0,0,0);
+            font-size:24px;
+            color:#FFF;
+            border-color:#FFF;
+            border-radius:5px;
+        }
+        option
+        {
+            color:#000;
+        }
+    </style>
+<!-- /css files -->
+</head>
+<body>
+<div class="log">
+	<div class="content2">
+		<form action="/uin/" method="post">
+			{% csrf_token %}
+			<!--<ol>-->
+                <li ><span>身份证&nbsp&nbsp&nbsp</span><input type="text" , name="uid" value="2017"></li>
+                <li><span>姓名&nbsp&nbsp&nbsp</span><input type="text" , name="uname" id="zdate" ></li>
+
+                </br>
+                <li><span>书/课&nbsp&nbsp&nbsp</span>
+                        <select>
+                            <option value="类别一">书课一</option>
+                            <option value="类别二">书课二</option>
+                        </select>
+                </li>
+
+                </br>
+                <li><span>类别&nbsp&nbsp&nbsp</span>
+                        <select>
+                            <option value="类别一">类别一</option>
+                            <option value="类别二">类别二</option>
+                        </select>
+                </li>
+                <!--<li><span style="font-size:30px;color:#FFF">类别&nbsp</span><input type="text" , name="ztype" value="河北张家口" ></li>-->
+                <li><span>数量&nbsp&nbsp&nbsp</span><input type="text" , name="ucount" ></li>
+                <li><span>总额&nbsp&nbsp&nbsp</span><input type="text" , name="uamt" ></li>
+                <li><span>总校金额&nbsp&nbsp&nbsp</span><input type="text" , name="zbsamt" ></li>`
+                <li><span>营销&nbsp&nbsp&nbsp</span><input type="text" , name="usplace" ></li>
+                <li><span>备注&nbsp&nbsp&nbsp</span><input type="text" , name="snote" ></li>
+                <li><span>分校打款&nbsp&nbsp&nbsp</span><input type="text" , name="fprestored" ></li>
+                <li><span>渠道&nbsp&nbsp&nbsp</span><input type="text" , name="channel" ></li>
+            <br />
+			<!--</ol>-->
+			<input type="submit" value="提交">
+		</form>
+        <h1>{{ 返回状态 }}</h1>
+        </div>
+	<div class="clear"></div>
+</div>
+
+<div class="footer">
+	<p></p>
+</div>
+</body>
+</html>

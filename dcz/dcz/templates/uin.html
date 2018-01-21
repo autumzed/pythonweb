@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>学员登记</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+<!-- font files  -->
+
+<!-- /font files  -->
+<!-- css files -->
+<link href="/static/css/styleui.css" rel='stylesheet' type='text/css' media="all" />
+<!-- /css files -->
+</head>
+<body>
+<div class="log">
+	<div class="content2">
+		<form action="/uin/" method="post">
+			{% csrf_token %}
+            <ul>
+                <li><span style="font-size:30px;color:#FFF">学年&nbsp&nbsp&nbsp</span><input type="text" , name="zyear" value="2017"></li>
+                <li><span style="font-size:30px;color:#FFF">报名日期&nbsp&nbsp&nbsp</span><input type="text" , name="zdate" id="zdate" ></li>
+                <li><span style="font-size:30px;color:#FFF">分销名称&nbsp&nbsp&nbsp</span><input type="text" , name="schoolname" value="河北张家口" ></li>
+                <li><span style="font-size:30px;color:#FFF">省+市&nbsp&nbsp&nbsp</span><input type="text" , name="zcity" value="河北张家口" ></li>
+                <li><span style="font-size:30px;color:#FFF">姓名&nbsp&nbsp&nbsp</span><input type="text" , name="uname" ></li>
+                <li><span style="font-size:30px;color:#FFF">电话&nbsp&nbsp&nbsp</span><input type="text" , name="tel" ></li>
+                <li><span style="font-size:30px;color:#FFF">地址&nbsp&nbsp&nbsp</span><input type="text" , name="uaddress" ></li>
+                <li><span style="font-size:30px;color:#FFF">邮编&nbsp&nbsp&nbsp</span><input type="text" , name="zpostcode" ></li>
+                <li><span style="font-size:30px;color:#FFF">银行&nbsp&nbsp&nbsp</span><input type="text" , name="ubank" ></li>
+                <li><span style="font-size:30px;color:#FFF">身份证&nbsp&nbsp&nbsp</span><input type="text" , name="uid" ></li>
+                <li><span style="font-size:30px;color:#FFF">QQ&nbsp&nbsp&nbsp</span><input type="text" , name="uqq" ></li>
+                <li><span style="font-size:30px;color:#FFF">账户&nbsp&nbsp&nbsp</span><input type="text" , name="uaccount" ></li>
+                <li><span style="font-size:30px;color:#FFF">密码&nbsp&nbsp&nbsp</span><input type="text" , name="upws" ></li>
+                <li><span style="font-size:30px;color:#FFF">微信&nbsp&nbsp&nbsp</span><input type="text" , name="uwechat" ></li>
+                <li><span style="font-size:30px;color:#FFF">行政代码&nbsp&nbsp&nbsp</span><input type="text" , name="denum" ></li>
+                <li><span style="font-size:30px;color:#FFF">身份证复印件&nbsp&nbsp&nbsp</span><input type="text" , name="idcopy" ></li>
+                <li><span style="font-size:30px;color:#FFF">手机型号&nbsp&nbsp&nbsp</span><input type="text" , name="ptype" ></li>
+                <li><span style="font-size:30px;color:#FFF">生日&nbsp&nbsp&nbsp</span><input type="text" , name="birth" ></li>
+
+
+            <br />
+            </ul>
+
+		</form>
+        <input type="submit" value="提交">
+        <h1>{{ 返回状态 }}</h1>
+        </div>
+	<div class="clear"></div>
+</div>
+
+<div class="footer">
+	<p></p>
+</div>
+<SCRIPT language=JavaScript>
+   today = new Date();
+   var centry ;
+   centry="";
+   date1 = centry + (today.getFullYear())  + "-" + (today.getMonth() + 1 ) + "-" + today.getDate();
+   document.getElementById("zdate").value=date1;
+ </SCRIPT>
+</body>
+</html>
