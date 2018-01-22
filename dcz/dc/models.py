@@ -67,6 +67,7 @@ class hrmresource(models.Model):
 
     devf6 = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
 
+
 class sales(models.Model):
     uid = models.CharField(max_length=300, verbose_name="学员id", null=False, blank=False)
 
@@ -184,10 +185,27 @@ class qa(models.Model):
     answer = models.TextField(verbose_name="答案", null=True, blank=True)
     analysis = models.TextField(verbose_name="解析", null=True, blank=True)
     beizhu = models.TextField(verbose_name="备注", null=True, blank=True)
+    weighted = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="权重(默认为1)", null=False, blank=False, default=1)
+    devf1 = models.TextField(verbose_name="自定义项1", null=True, blank=True)
+    devf2 = models.TextField(verbose_name="自定义项2", null=True, blank=True)
+    devf3 = models.TextField(verbose_name="自定义项3", null=True, blank=True)
+
+
+"""
+    存储学生的答题细节
+"""
+class qa_record(models.Model):
+    uid = models.CharField(max_length=300, verbose_name="学员id", null=False, blank=False)
+    questionIDs =  models.TextField(verbose_name="题的id,用逗号隔开", null=True, blank=True)
+    select = models.TextField(verbose_name="选项记录,用逗号隔开", null=True, blank=True)
+    test_score = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="成绩", null=False, blank=False, default=0)
+
+    type = models.TextField(verbose_name="题型", null=True, blank=True, default='1')
 
     devf1 = models.TextField(verbose_name="自定义项1", null=True, blank=True)
     devf2 = models.TextField(verbose_name="自定义项2", null=True, blank=True)
     devf3 = models.TextField(verbose_name="自定义项3", null=True, blank=True)
+
 
 class ns(models.Model):
     opr_1 = models.CharField(max_length=300, null=True, blank=True)

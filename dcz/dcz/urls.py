@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import *
 from django.contrib import admin
 from . import view
-
+from . import loginHandler
 urlpatterns = [
     url(r'^index/', view.getsql),
     url(r'^admin/', admin.site.urls),
@@ -24,10 +24,11 @@ urlpatterns = [
     url(r'^uin/', view.uin),
     url(r'^sin/', view.sin),
     url(r'^mryt/', view.mryt),
-    url(r'^sjnt/', view.sjnt),
+    url(r'^showQuestion/', view.sjnt),
     url(r'^zsjz/', view.zsjz),
     url(r'^fxhd/', view.fxhd),
     url(r'^zxgg/', view.zxgg),
+    url(r'^login/', loginHandler.doLoginAction),
     #url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}), 
 ]
 

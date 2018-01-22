@@ -51,7 +51,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dcz.urls'
-
+# 若关闭网页，删除session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+# session 有效时间 60秒*30 = 30分钟
+SESSION_COOKIE_AGE = 60*30
+APPEND_SLASH = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

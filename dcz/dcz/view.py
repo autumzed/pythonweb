@@ -1,6 +1,7 @@
 #-*-coding:utf-8-*- 
 from django.shortcuts import render
 from django.db import connection
+from django.http import HttpResponseRedirect
 from dc.models import hrmresource
 from dc.models import sales
 from dc.models import qa
@@ -94,32 +95,28 @@ def mryt(request):
     date = {}
     date['list'] = list_show
     return render(request, 'mryt.html', {'list': list_show})
-    # return render(request, 'mryt.html')
 """
 随机N题
 """
 def sjnt(request):
     # 判断用户是否登陆
-    if request.session.get("user",default=None) is None:
-        list_show={}
-        # TODO 跳转到登录页面
-        return render(request, 'mryt.html', {'list': list_show})
+    userName = request.session.get("user", default=None)
+    if userName is None:
+        return render(request, 'login.html')
+
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM dc_qa')
     list = cursor.fetchall()
     list_show = []
 
     for i in list:
-        dic = {'question': i[1], 'opr_1': i[2], 'opr_2': i[3], 'opr_3': i[4], 'opr_4': i[5], 'opr_5': i[6],
+        dic = {"id":i[0],'question': i[1], 'opr_1': i[2], 'opr_2': i[3], 'opr_3': i[4], 'opr_4': i[5], 'opr_5': i[6],
                'opr_6': i[7], 'analysis': i[9], 'beizhu': i[11], 'answer': i[14]}
         list_show.append(dic)
-    date = {}
-    date['list'] = list_show
     # 从show里面随机取出N个
     if list_show.__len__() > 3:
-        request.session['user']='wuqiujie'
-
-    return render(request, 'mryt.html', {'list': list_show})
+        list_show = random.sample(list_show, 3)
+    return render(request, 'showQuestion.html', {'userName': userName, 'list': list_show})
 
 
 def zsjz(request):
