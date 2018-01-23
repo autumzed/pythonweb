@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import *
 from django.contrib import admin
-from . import view
-from . import loginHandler
+from . import view, loginHandler, scoring
 urlpatterns = [
     url(r'^index/', view.getsql),
     url(r'^admin/', admin.site.urls),
@@ -29,6 +28,8 @@ urlpatterns = [
     url(r'^fxhd/', view.fxhd),
     url(r'^zxgg/', view.zxgg),
     url(r'^login/', loginHandler.doLoginAction),
+    url(r'^thankingPage/', scoring.doScoringAction),
+
     #url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}), 
 ]
 

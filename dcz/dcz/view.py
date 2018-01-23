@@ -108,7 +108,7 @@ def sjnt(request):
     cursor.execute('SELECT * FROM dc_qa')
     list = cursor.fetchall()
     list_show = []
-
+    qaID = ''
     for i in list:
         dic = {"id":i[0],'question': i[1], 'opr_1': i[2], 'opr_2': i[3], 'opr_3': i[4], 'opr_4': i[5], 'opr_5': i[6],
                'opr_6': i[7], 'analysis': i[9], 'beizhu': i[11], 'answer': i[14]}
@@ -116,7 +116,12 @@ def sjnt(request):
     # 从show里面随机取出N个
     if list_show.__len__() > 3:
         list_show = random.sample(list_show, 3)
-    return render(request, 'showQuestion.html', {'userName': userName, 'list': list_show})
+    for i in range(0,list_show.__len__()):
+        if i==list_show.__len__()-1 or list_show.__len__()==1:
+            qaID += str(list_show.__getitem__(i)['id'])
+        else:
+            qaID += str(list_show.__getitem__(i)['id'])+','
+    return render(request, 'showQuestion.html', {'userName': userName, 'userID': userName, 'qaID': qaID, 'list': list_show})
 
 
 def zsjz(request):
