@@ -34,6 +34,7 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="userid" value="{{userID}}">
                                 <input type="hidden" name="qaid" value="{{qaID}}">
+                                <input type="hidden" name="token" value="{% csrf_token %}">
                                 {% for i in list %}
                                 <strong><span style="font-size: 14px;">{{ i.question }}</span></strong>
                                     </br>

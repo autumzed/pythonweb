@@ -3,18 +3,26 @@ from django.shortcuts import render_to_response
 from django.shortcuts import render
 from . import view
 from django.http import HttpResponseRedirect
-
+from dc.models import hrmresource
 
 def doLoginAction(request):
 
     if request.POST:
         getName = request.POST['username']
         password = request.POST['password']
-        if getName:
-            request.session['user'] = getName
-            request.session['userID'] = getName
-            print(getName)
-            return HttpResponseRedirect("/showQuestion/")
+
+        if getName and password:
+            checkhrm = hrmresource.objects.get(uaccount=getName)
+            if checkhrm.upws == password:
+                request.session['user'] = checkhrm.uname
+                request.session['userID'] = checkhrm.id
+                return HttpResponseRedirect("/showQuestion/")
+            else:
+                request.session['user'] = None
+                return render(request, 'login.html', {'message': '用户名或密码无效'})
+        else:
+            request.session['user'] = None
+            return render(request, 'login.html', {'message': '请输入正确的用户名和密码'})
     else:
         request.session['user'] = None
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'message': '请输入正确的用户名和密码'})

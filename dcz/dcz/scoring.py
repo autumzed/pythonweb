@@ -7,9 +7,14 @@ from dc.models import qa,qa_record
 
 def doScoringAction(request):
     # 分数计算
+
     if request.POST:
         # 获取登陆者id
         get_uid = request.POST['userid']
+        # 检测是否已经提交过
+        token = request.POST['token']
+        if token==request.session.get("token", default=None):
+            return render(request, 'thankingPage.html', {'message': '请勿重复提交！'})
         # 获取都是那些题目
         org_qaids = request.POST['qaid']
         qaids = org_qaids.split(',')
@@ -37,4 +42,7 @@ def doScoringAction(request):
                 result.setdefault(key, False)
         qa_re = qa_record(uid=get_uid, questionIDs=org_qaids, select=select, test_score=score, type=1)
         qa_re.save()
-    return render(request, 'thankingPage.html', {'score': score})
+        # 保存
+        session_id_page = {get_uid: ''}
+        request.session["token"] = token
+    return render(request, 'thankingPage.html', {'message': '你好，您的分数是%s分'%score})

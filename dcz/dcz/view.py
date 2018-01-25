@@ -101,7 +101,8 @@ def mryt(request):
 def sjnt(request):
     # 判断用户是否登陆
     userName = request.session.get("user", default=None)
-    if userName is None:
+    userID = request.session.get("userID", default=None)
+    if not (userName or userID):
         return render(request, 'login.html')
 
     cursor = connection.cursor()
@@ -121,7 +122,7 @@ def sjnt(request):
             qaID += str(list_show.__getitem__(i)['id'])
         else:
             qaID += str(list_show.__getitem__(i)['id'])+','
-    return render(request, 'showQuestion.html', {'userName': userName, 'userID': userName, 'qaID': qaID, 'list': list_show})
+    return render(request, 'showQuestion.html', {'userName': userName, 'userID': userID, 'qaID': qaID, 'list': list_show})
 
 
 def zsjz(request):
