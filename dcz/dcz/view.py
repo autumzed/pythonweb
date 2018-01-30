@@ -7,6 +7,11 @@ from dc.models import sales
 from dc.models import qa
 # from dc.models import uexam
 import random
+import os
+import configparser
+# 读取配置文件
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 def uin(request):
     ctx = {}
@@ -115,8 +120,8 @@ def sjnt(request):
                'opr_6': i[7], 'analysis': i[9], 'beizhu': i[11], 'answer': i[14]}
         list_show.append(dic)
     # 从show里面随机取出N个
-    if list_show.__len__() > 3:
-        list_show = random.sample(list_show, 3)
+    if list_show.__len__() > int(config.get("question", "random_number")):
+        list_show = random.sample(list_show, int(config.get("question", "random_number")))
     for i in range(0,list_show.__len__()):
         if i==list_show.__len__()-1 or list_show.__len__()==1:
             qaID += str(list_show.__getitem__(i)['id'])
