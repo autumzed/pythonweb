@@ -42,10 +42,19 @@
                                     </br>
                                     <input type="radio" name="{{i.id}}" value="B"><span style="font-size: 14px;">{{ i.opr_2 }}</span>
                                     </br>
-                                    <input type="radio" name="{{i.id}}" value="C"><span style="font-size: 14px;">{{ i.opr_3 }}</span>
-                                    </br>
-                                    <input type="radio" name="{{i.id}}" value="D"><span style="font-size: 14px;">{{ i.opr_4 }}</span>
-                                    </br>
+                                    {% if i.opr_3 is not None %}
+                                        <input type="radio" name="{{i.id}}" value="C"><span style="font-size: 14px;">{{ i.opr_3 }}</span>
+                                        </br>
+                                    {% endif %}
+                                    {% if i.opr_4 is not None %}
+                                        <input type="radio" name="{{i.id}}" value="D"><span style="font-size: 14px;">{{ i.opr_4 }}</span>
+                                        </br>
+                                    {% endif %}
+                                    {% if i.opr_5 is not None %}
+                                        <input type="radio" name="{{i.id}}" value="E"><span style="font-size: 14px;">{{ i.opr_5 }}</span>
+                                        </br>
+                                    {% endif %}
+
                                     <!--
                                     <strong><span style="font-size: 14px;">{{ i.answer }}</span></strong></span>
                                     <span style="font-size: 14px;color: rgb(255, 76, 0);">{{ i.analysis }}</span>
