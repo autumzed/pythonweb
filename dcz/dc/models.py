@@ -189,7 +189,7 @@ class qa(models.Model):
     devf1 = models.TextField(verbose_name="自定义项1", null=True, blank=True)
     devf2 = models.TextField(verbose_name="自定义项2", null=True, blank=True)
     devf3 = models.TextField(verbose_name="自定义项3", null=True, blank=True)
-
+    type = models.TextField(verbose_name="题型", null=True, blank=True, default='1')
 
 """
     存储学生的答题细节
