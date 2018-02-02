@@ -25,7 +25,7 @@ def mryt(request):
     list_show = []
 
     for i in list:
-        dic = {'question':i[1],'opr_1':i[2],'opr_2': i[3],'opr_3':i[4],'opr_4':i[5],'opr_5':i[6],'opr_6':i[7], 'analysis':i[9],'beizhu': i[11], 'answer':i[14]}
+        dic = {"id":i[0], 'question':i[1],'opr_1':i[2],'opr_2': i[3],'opr_3':i[4],'opr_4':i[5],'opr_5':i[6],'opr_6':i[7], 'analysis':i[9],'beizhu': i[11], 'answer':i[14]}
         list_show.append(dic)
 
     # 根据日期读取今日是哪道题
@@ -69,7 +69,7 @@ def sjnt(request):
     userName = request.session.get("user", default=None)
     userID = request.session.get("userID", default=None)
     if not (userName or userID):
-        return render(request, 'login.html')
+        return render(request, 'loginPage.html')
 
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM dc_qa')

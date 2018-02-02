@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>张博士医考登录页面</title>
+    <link rel="stylesheet" href="/static/css/LoginPage.css">
+</head>
+<body>
+
+  
+<div class="container">
+  <div class="info">
+      <h1>张博士医考登录</h1>
+  </div>
+</div>
+<div class="form">
+    <div class="thumbnail"><img src="/static/images/hat.svg"/></div>
+        <form class="login-form" action = "/login/"  method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="username" name="username"/>
+            <input type="password" placeholder="password" name="password"/>
+            <button type="submit">登录</button>
+        </form>
+        <p><font size="5" face="arial" color="red">{{ message }}</font></p>
+</div>
+
+</body>
+
+</html>

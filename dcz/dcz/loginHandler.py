@@ -12,19 +12,22 @@ def doLoginAction(request):
         password = request.POST['password']
 
         if getName and password:
-            checkhrm = hrmresource.objects.get(uaccount=getName)
+            try:
+                checkhrm = hrmresource.objects.get(uaccount=getName)
+            except Exception as e:
+                return render(request, 'loginPage.html', {'message': '用户名或密码无效'})
             if checkhrm is None:
-                return render(request, 'login.html', {'message': '用户名或密码无效'})
+                return render(request, 'loginPage.html', {'message': '用户名或密码无效'})
             if checkhrm.upws == password:
                 request.session['user'] = checkhrm.uname
                 request.session['userID'] = checkhrm.id
                 return HttpResponseRedirect("/showQuestion/")
             else:
                 request.session['user'] = None
-                return render(request, 'login.html', {'message': '用户名或密码无效'})
+                return render(request, 'loginPage.html', {'message': '用户名或密码无效'})
         else:
             request.session['user'] = None
-            return render(request, 'login.html', {'message': '请输入正确的用户名和密码'})
+            return render(request, 'loginPage.html', {'message': '请输入正确的用户名和密码'})
     else:
         request.session['user'] = None
-        return render(request, 'login.html', {'message': '请输入正确的用户名和密码'})
+        return render(request, 'loginPage.html', {'message': '请输入正确的用户名和密码'})

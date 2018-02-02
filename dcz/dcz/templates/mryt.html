@@ -7,12 +7,25 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-
+    <script src="/static/js/jquery.min.js"></script>
 
     <title>张博士医考每日1题</title>
     <link rel="stylesheet" href="/static/css/moble.css">
 
+    <script type="text/javascript">
+        $(document).ready(function(e){
+            $("#hide").click(function(){
+                $("p").hide();
+            });
+            $("button").click(function(e){
 
+                var answerID = 'answer' + $(e.target).attr("name")
+                var analyzeID = 'analyze' + $(e.target).attr("name")
+                $("#" + answerID).show();
+                $("#" + analyzeID).show();
+            });
+        });
+    </script>
 </head>
 <body id="activity-detail" class="zh_CN mm_appmsg">
 
@@ -35,8 +48,9 @@
                                     <p><span style="font-size: 14px;">{{ i.opr_2 }}</span></p>
                                     <p><span style="font-size: 14px;">{{ i.opr_3 }}</span></p>
                                     <p><span style="font-size: 14px;">{{ i.opr_4 }}</span></p>
-                                    <p><strong><span style="font-size: 14px;">{{ i.answer }}</span></strong></span></p>
-                                    <p><span style="font-size: 14px;color: rgb(255, 76, 0);">{{ i.analysis }}</span></p>
+                                    <button name="{{i.id}}" type="button">显示答案</button>
+                                    <p hidden id="answer{{i.id}}"><strong><span style="font-size: 14px;">{{ i.answer }}</span></strong></span></p>
+                                    <p hidden id="analyze{{i.id}}"><span style="font-size: 14px;color: rgb(255, 76, 0);" >{{ i.analysis }}</span></p>
                                 </p>
                                 {% endfor %}
                              </p>
