@@ -27,12 +27,21 @@ def doScoringAction(request):
         select = ""
         score = 0
         # 获取每道题的答案
+
         for i in qaids:
-            record.setdefault(i, request.POST[i])
-            if i is qaids[qaids.__len__()-1]:
-                select += request.POST[i]
+            if i in request.POST:
+                record.setdefault(i, request.POST[i])
+                if i is qaids[qaids.__len__() - 1]:
+                    select += request.POST[i]
+                else:
+                    select += request.POST[i] + ","
             else:
-                select += request.POST[i] + ","
+                record.setdefault(i, "N")
+                if i is qaids[qaids.__len__() - 1]:
+                    select += "N"
+                else:
+                    select += "N" + ","
+
         # 遍历，校对答案是否正确
         for key in record:
             if record.get(key) == answer.get(int(key)):
