@@ -13,6 +13,8 @@ def doLoginAction(request):
 
         if getName and password:
             checkhrm = hrmresource.objects.get(uaccount=getName)
+            if checkhrm is None:
+                return render(request, 'login.html', {'message': '用户名或密码无效'})
             if checkhrm.upws == password:
                 request.session['user'] = checkhrm.uname
                 request.session['userID'] = checkhrm.id

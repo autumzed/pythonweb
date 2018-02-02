@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import *
 from django.contrib import admin
-from . import view, loginHandler, scoring
+from . import view, loginHandler, scoring, showQuestion
+
 urlpatterns = [
     url(r'^index/', view.getsql),
     url(r'^admin/', admin.site.urls),
     # url(r'^testdb/', testdb.testdb),
     url(r'^uin/', view.uin),
     url(r'^sin/', view.sin),
-    url(r'^mryt/', view.mryt),
-    url(r'^showQuestion/', view.sjnt),
+    url(r'^mryt/', showQuestion.mryt),
+    url(r'^showQuestion/', showQuestion.sjnt),
     url(r'^zsjz/', view.zsjz),
     url(r'^fxhd/', view.fxhd),
     url(r'^zxgg/', view.zxgg),
