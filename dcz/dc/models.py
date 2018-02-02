@@ -192,7 +192,7 @@ class qa(models.Model):
     type = models.TextField(verbose_name="题型", null=True, blank=True, default='1')
 
 """
-    存储学生的答题细节
+    存储学生的答题细节p
 """
 class qa_record(models.Model):
     uid = models.CharField(max_length=300, verbose_name="学员id", null=False, blank=False)

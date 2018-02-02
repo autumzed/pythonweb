@@ -2,9 +2,9 @@ from django.contrib import admin
 from dc.models import qa,hrmresource,sales,ns
 
 class QQA(admin.ModelAdmin):
-    list_display = ('question', 'opr_1', 'opr_2', 'opr_3', 'opr_4', 'opr_5', 'answer', 'analysis')
-    fields = ('question', 'opr_1', 'opr_2', 'opr_3', 'opr_4', 'opr_5',  'answer','analysis')
-    search_fields = ('question', 'opr_1', 'opr_2', 'opr_3', 'opr_4', 'opr_5',  'answer','analysis')
+    list_display = ('question', 'opr_1', 'opr_2', 'opr_3', 'opr_4', 'opr_5', 'answer', 'analysis', 'weighted', 'type')
+    fields = ('question', 'opr_1', 'opr_2', 'opr_3', 'opr_4', 'opr_5',  'answer', 'analysis', 'weighted', 'type')
+    search_fields = ('question', 'opr_1', 'opr_2', 'opr_3', 'opr_4', 'opr_5',  'answer', 'analysis')
 
 
 class Qhr(admin.ModelAdmin):
