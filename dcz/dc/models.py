@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+import django.utils.timezone as timezone
 def decode(info):
     return info.decode('utf-8')
 # class product(models.Model):
@@ -66,7 +67,8 @@ class hrmresource(models.Model):
     devf5 = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
 
     devf6 = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
-
+    add_date = models.DateTimeField('保存日期', default=timezone.now)
+    mod_date = models.DateTimeField('最后修改日期', auto_now = True)
 
 class sales(models.Model):
     uid = models.CharField(max_length=300, verbose_name="学员id", null=False, blank=False)
@@ -106,6 +108,8 @@ class sales(models.Model):
     # 预留字段
     devf5 = models.DecimalField(max_digits=15, decimal_places=0, null=True, blank=True)
 
+    add_date = models.DateTimeField('保存日期', default=timezone.now)
+    mod_date = models.DateTimeField('最后修改日期', auto_now=True)
 
 # class ztype(models.Model):
 #     ztype = models.CharField(max_length=300, verbose_name="类别", null=False, blank=False)
@@ -137,7 +141,8 @@ class uexam(models.Model):
 
     # 预留字段
     devf3 = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
-
+    add_date = models.DateTimeField('保存日期', default=timezone.now)
+    mod_date = models.DateTimeField('最后修改日期', auto_now = True)
     # class express(models.Model):
     #     uid = models.CharField(max_length=300, verbose_name="学员id", null=False, blank=False)
     #
@@ -190,6 +195,8 @@ class qa(models.Model):
     devf2 = models.TextField(verbose_name="自定义项2", null=True, blank=True)
     devf3 = models.TextField(verbose_name="自定义项3", null=True, blank=True)
     type = models.TextField(verbose_name="题型", null=True, blank=True, default='1')
+    add_date = models.DateTimeField('保存日期', default=timezone.now)
+    mod_date = models.DateTimeField('最后修改日期', auto_now = True)
 
 """
     存储学生的答题细节p
@@ -206,6 +213,9 @@ class qa_record(models.Model):
     devf2 = models.TextField(verbose_name="自定义项2", null=True, blank=True)
     devf3 = models.TextField(verbose_name="自定义项3", null=True, blank=True)
 
+    add_date = models.DateTimeField('保存日期', default=timezone.now)
+    mod_date = models.DateTimeField('最后修改日期', auto_now = True)
+
 
 class ns(models.Model):
     opr_1 = models.CharField(max_length=300, null=True, blank=True)
@@ -216,3 +226,6 @@ class ns(models.Model):
     devf1 = models.CharField(max_length=300, null=True, blank=True)
     devf2 = models.CharField(max_length=300, null=True, blank=True)
     devf3 = models.TextField(verbose_name="自定义项3", null=True, blank=True)
+
+    add_date = models.DateTimeField('保存日期', default=timezone.now)
+    mod_date = models.DateTimeField('最后修改日期', auto_now = True)

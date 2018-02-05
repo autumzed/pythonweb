@@ -133,13 +133,14 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'zh-Hans'
 
 # TIME_ZONE = 'CCT'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/BeiJing'
+# Asia/Shanghai
 
 USE_I18N = True
 
 USE_L10N = True
-
-USE_TZ = True
+# 时区切换为本地时间
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from . import view
 from django.http import HttpResponseRedirect
 from dc.models import qa,qa_record
+import time
 
 def doScoringAction(request):
     # 分数计算
@@ -49,6 +50,7 @@ def doScoringAction(request):
                 score += 1 * weighted.get(int(key))
             else:
                 result.setdefault(key, False)
+        nowtime = str(time.strftime("%Y-%m-%d", time.localtime(time.time())))
         qa_re = qa_record(uid=get_uid, questionIDs=org_qaids, select=select, test_score=score, type=1)
         qa_re.save()
         # 保存
